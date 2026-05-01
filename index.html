@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MC Markets 客服適用期考核 | New Hire Assessment</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang TC', 'Microsoft JhengHei', sans-serif; }
+body { background: #f5f7fa; color: #2c3e50; min-height: 100vh; padding: 20px; line-height: 1.6; }
+.container { max-width: 960px; margin: 0 auto; background: #ffffff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); padding: 40px; }
+
+/* Language Switcher */
+.lang-switcher { position: sticky; top: 20px; z-index: 100; display: flex; justify-content: flex-end; margin-bottom: 16px; }
+.lang-btn-group { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: inline-flex; gap: 2px; }
+.lang-btn { padding: 8px 18px; border: none; background: transparent; color: #64748b; cursor: pointer; border-radius: 6px; font-size: 13px; font-weight: 600; transition: all 0.2s; letter-spacing: 0.5px; }
+.lang-btn.active { background: #1e40af; color: #ffffff; }
+.lang-btn:not(.active):hover { background: #f1f5f9; color: #1e40af; }
+
+/* Header */
+.header { text-align: center; padding: 24px 20px 32px; border-bottom: 3px solid #1e40af; margin-bottom: 32px; }
+.logo { font-size: 28px; font-weight: 700; color: #1e40af; letter-spacing: 3px; margin-bottom: 12px; }
+.title { font-size: 30px; font-weight: 600; margin-bottom: 8px; color: #1a202c; }
+.subtitle { color: #64748b; font-size: 14px; }
+
+/* Info Panel */
+.info-panel { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 20px; margin-bottom: 28px; }
+.info-panel h3 { color: #1e40af; margin-bottom: 14px; font-size: 16px; font-weight: 600; }
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; font-size: 14px; }
+.info-item { padding: 10px 14px; background: #ffffff; border-radius: 8px; border: 1px solid #e0e7ff; color: #475569; }
+.info-item strong { color: #1e40af; font-weight: 600; }
+
+/* User Form */
+.user-form { background: #f8fafc; padding: 22px; border-radius: 12px; margin-bottom: 28px; border: 1px solid #e2e8f0; }
+.user-form input { width: 100%; padding: 12px 14px; background: #ffffff; border: 1px solid #cbd5e1; color: #1e293b; border-radius: 8px; margin-bottom: 12px; font-size: 14px; transition: all 0.2s; }
+.user-form input:focus { outline: none; border-color: #1e40af; box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1); }
+.user-form label { display: block; margin-bottom: 6px; color: #475569; font-size: 13px; font-weight: 500; }
+
+/* Section */
+.section { background: #ffffff; border-radius: 12px; padding: 26px; margin-bottom: 22px; border: 1px solid #e2e8f0; border-left: 5px solid #1e40af; }
+.section-title { font-size: 18px; color: #1e40af; margin-bottom: 8px; font-weight: 600; }
+.section-desc { color: #64748b; font-size: 13px; margin-bottom: 22px; }
+
+/* Question */
+.question { background: #ffffff; border-radius: 10px; padding: 20px; margin-bottom: 16px; border: 1px solid #e2e8f0; transition: all 0.3s; }
+.question.answered-correct { border-color: #10b981; background: #f0fdf4; }
+.question.answered-wrong { border-color: #ef4444; background: #fef2f2; }
+.q-header { display: flex; gap: 10px; margin-bottom: 14px; align-items: flex-start; }
+.q-num { background: #1e40af; color: #ffffff; padding: 5px 12px; border-radius: 6px; font-weight: 700; font-size: 13px; flex-shrink: 0; }
+.q-text { font-size: 15px; line-height: 1.6; flex: 1; color: #1e293b; }
+.q-type { font-size: 11px; color: #64748b; padding: 3px 10px; background: #f1f5f9; border-radius: 4px; margin-left: 8px; border: 1px solid #e2e8f0; }
+
+/* Options */
+.options { display: flex; flex-direction: column; gap: 10px; }
+.option { display: flex; align-items: flex-start; padding: 12px 16px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; cursor: pointer; transition: all 0.2s; font-size: 14px; color: #334155; }
+.option:hover { background: #eff6ff; border-color: #1e40af; }
+.option input { margin-right: 12px; margin-top: 4px; accent-color: #1e40af; cursor: pointer; flex-shrink: 0; }
+.option.correct { background: #dcfce7; border-color: #10b981; color: #065f46; }
+.option.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
+
+/* Text input questions */
+.text-answer { width: 100%; min-height: 100px; padding: 14px; background: #ffffff; border: 1px solid #cbd5e1; color: #1e293b; border-radius: 8px; font-size: 14px; resize: vertical; font-family: inherit; transition: all 0.2s; }
+.text-answer:focus { outline: none; border-color: #1e40af; box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1); }
+
+/* Explanation */
+.explanation { display: none; margin-top: 14px; padding: 14px 16px; background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 6px; font-size: 13px; color: #78350f; line-height: 1.6; }
+.explanation.show { display: block; }
+.explanation strong { color: #92400e; font-weight: 600; }
+
+/* Buttons */
+.btn-group { text-align: center; padding: 32px 0 16px; }
+.btn { padding: 13px 32px; font-size: 15px; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; margin: 0 6px; letter-spacing: 0.5px; }
+.btn-primary { background: #1e40af; color: #ffffff; box-shadow: 0 2px 8px rgba(30, 64, 175, 0.25); }
+.btn-primary:hover { background: #1e3a8a; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(30, 64, 175, 0.35); }
+.btn-secondary { background: #ffffff; color: #1e40af; border: 1px solid #1e40af; }
+.btn-secondary:hover { background: #eff6ff; }
+
+/* Result */
+.result-panel { display: none; position: sticky; bottom: 20px; background: #ffffff; border: 2px solid #1e40af; border-radius: 14px; padding: 26px; margin-top: 24px; box-shadow: 0 8px 32px rgba(30, 64, 175, 0.2); }
+.result-panel.show { display: block; }
+.result-score { font-size: 52px; font-weight: 700; color: #1e40af; text-align: center; margin-bottom: 8px; letter-spacing: -1px; }
+.result-status { text-align: center; font-size: 18px; margin-bottom: 18px; }
+.result-pass { color: #10b981; font-weight: 600; }
+.result-fail { color: #ef4444; font-weight: 600; }
+.result-detail { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 16px; }
+.result-stat { background: #f8fafc; padding: 14px; border-radius: 10px; text-align: center; border: 1px solid #e2e8f0; }
+.result-stat strong { display: block; font-size: 24px; color: #1e40af; margin-bottom: 4px; }
+.result-stat span { font-size: 12px; color: #64748b; }
+
+/* Progress bar */
+.progress-bar { background: #e2e8f0; border-radius: 6px; height: 8px; margin-bottom: 28px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, #1e40af, #3b82f6); width: 0%; transition: width 0.5s; }
+
+/* Hide elements based on language */
+[data-lang]:not(.show) { display: none; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  body { padding: 10px; }
+  .container { padding: 20px; }
+  .title { font-size: 22px; }
+  .section { padding: 18px; }
+  .question { padding: 16px; }
+  .btn { padding: 11px 22px; font-size: 14px; margin: 4px; }
+  .lang-switcher { justify-content: center; }
+}
+
+@media print {
+  body { background: white; padding: 0; }
+  .container { box-shadow: none; padding: 20px; }
+  .btn-group, .result-panel, .lang-switcher { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Language Switcher -->
+<div class="lang-switcher">
+  <div class="lang-btn-group">
+    <button class="lang-btn active" data-set-lang="zh" type="button">中文</button>
+    <button class="lang-btn" data-set-lang="en" type="button">English</button>
+  </div>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <div class="logo">MC MARKETS</div>
+  <div class="title">
+    <span data-lang="zh" class="show">客服新進同仁適用期考核</span>
+    <span data-lang="en">New Hire Customer Service Assessment</span>
+  </div>
+  <div class="subtitle">
+    <span data-lang="zh" class="show">New Hire Customer Service Assessment · 通過分數 80 分</span>
+    <span data-lang="en">客服新進同仁適用期考核 · Pass Score: 80</span>
+  </div>
+</div>
+
+<!-- Info Panel -->
+<div class="info-panel">
+  <h3>
+    <span data-lang="zh" class="show">📋 考核說明</span>
+    <span data-lang="en">📋 Assessment Instructions</span>
+  </h3>
+  <div class="info-grid">
+    <div class="info-item">
+      <span data-lang="zh" class="show"><strong>題目總數：</strong>51 題</span>
+      <span data-lang="en"><strong>Total Questions:</strong> 51</span>
+    </div>
+    <div class="info-item">
+      <span data-lang="zh" class="show"><strong>考試時長：</strong>建議 60 分鐘</span>
+      <span data-lang="en"><strong>Duration:</strong> 60 minutes (recommended)</span>
+    </div>
+    <div class="info-item">
+      <span data-lang="zh" class="show"><strong>通過標準：</strong>80 分以上</span>
+      <span data-lang="en"><strong>Passing Score:</strong> 80 or above</span>
+    </div>
+    <div class="info-item">
+      <span data-lang="zh" class="show"><strong>題型：</strong>選擇 + 簡答</span>
+      <span data-lang="en"><strong>Format:</strong> Multiple Choice + Short Answer</span>
+    </div>
+  </div>
+  <p style="margin-top: 14px; font-size: 13px; color: #475569;">
+    <span data-lang="zh" class="show">本考核涵蓋 MC Markets 全部 16 個業務模組。請仔細閱讀題目，依據官方知識庫內容作答。提交後系統將自動評分並顯示正確答案與解析。</span>
+    <span data-lang="en">This assessment covers all 16 business modules of MC Markets. Please read each question carefully and answer based on the official knowledge base. Upon submission, the system will automatically grade your answers and display correct answers with explanations.</span>
+  </p>
+</div>
+
+<!-- User Form -->
+<div class="user-form">
+  <label>
+    <span data-lang="zh" class="show">姓名 / Name</span>
+    <span data-lang="en">Name / 姓名</span>
+  </label>
+  <input type="text" id="userName" data-placeholder-zh="請輸入您的姓名" data-placeholder-en="Please enter your name" placeholder="請輸入您的姓名">
+  <label>
+    <span data-lang="zh" class="show">部門 / Department</span>
+    <span data-lang="en">Department / 部門</span>
+  </label>
+  <input type="text" id="userDept" value="客服部 Customer Service">
+  <label>
+    <span data-lang="zh" class="show">考核日期 / Date</span>
+    <span data-lang="en">Date / 考核日期</span>
+  </label>
+  <input type="date" id="userDate">
+</div>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<form id="examForm">
+
+<!-- ===== Section 1: Platform Basics ===== -->
+<div class="section">
+  <div class="section-title">
+    <span data-lang="zh" class="show">📚 第一部分：平台基礎認知（10 題）</span>
+    <span data-lang="en">📚 Part 1: Platform Fundamentals (10 questions)</span>
+  </div>
+  <div class="section-desc">
+    <span data-lang="zh" class="show">考核對 MC Markets 平台、監管、團隊和產品定位的理解</span>
+    <span data-lang="en">Tests understanding of the MC Markets platform, regulation, team, and product positioning</span>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q1</span><div class="q-text">
+      <span data-lang="zh" class="show">MC Markets 是一個什麼類型的平台？</span>
+      <span data-lang="en">What type of platform is MC Markets?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q1" value="a">
+        <span><span data-lang="zh" class="show">A. 純加密貨幣現貨交易所</span><span data-lang="en">A. A pure cryptocurrency spot exchange</span></span>
+      </label>
+      <label class="option"><input type="radio" name="q1" value="b">
+        <span><span data-lang="zh" class="show">B. 鏈上可驗證的多資產交易平台，支援加密貨幣、外匯、貴金屬、指數、能源、美股的現貨與永續合約</span><span data-lang="en">B. An on-chain verifiable multi-asset trading platform supporting spot and perpetual trading of crypto, forex, precious metals, indices, energy, and US stocks</span></span>
+      </label>
+      <label class="option"><input type="radio" name="q1" value="c">
+        <span><span data-lang="zh" class="show">C. DEX 去中心化交易所</span><span data-lang="en">C. A decentralized exchange (DEX)</span></span>
+      </label>
+      <label class="option"><input type="radio" name="q1" value="d">
+        <span><span data-lang="zh" class="show">D. 銀行類金融機構</span><span data-lang="en">D. A bank-like financial institution</span></span>
+      </label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>MC Markets 是鏈上可驗證的多資產交易平台，配備鏈上儲備證明、閃兌、金庫等核心功能。</span>
+      <span data-lang="en"><strong>Explanation:</strong> MC Markets is an on-chain verifiable multi-asset trading platform with core features like on-chain proof of reserves, instant swap, and vaults.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q2</span><div class="q-text">
+      <span data-lang="zh" class="show">MC Markets 受哪個機構監管？</span>
+      <span data-lang="en">Which authority regulates MC Markets?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q2" value="a"><span><span data-lang="zh" class="show">A. SEC（美國證監會）</span><span data-lang="en">A. SEC (US Securities and Exchange Commission)</span></span></label>
+      <label class="option"><input type="radio" name="q2" value="b"><span><span data-lang="zh" class="show">B. FSA（金融服務管理局）</span><span data-lang="en">B. FSA (Financial Services Authority)</span></span></label>
+      <label class="option"><input type="radio" name="q2" value="c"><span><span data-lang="zh" class="show">C. FCA（英國金融行為監管局）</span><span data-lang="en">C. FCA (UK Financial Conduct Authority)</span></span></label>
+      <label class="option"><input type="radio" name="q2" value="d"><span><span data-lang="zh" class="show">D. 暫無監管</span><span data-lang="en">D. Currently unregulated</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>MC Markets 受金融服務管理局（FSA）監管，遵守 KYC 和 AML 標準。</span>
+      <span data-lang="en"><strong>Explanation:</strong> MC Markets is regulated by the Financial Services Authority (FSA) and complies with KYC and AML standards.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="d">
+    <div class="q-header"><span class="q-num">Q3</span><div class="q-text">
+      <span data-lang="zh" class="show">下列哪個國家/地區的居民「不可」使用 MC Markets？</span>
+      <span data-lang="en">Residents of which country/region are NOT permitted to use MC Markets?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q3" value="a"><span><span data-lang="zh" class="show">A. 日本</span><span data-lang="en">A. Japan</span></span></label>
+      <label class="option"><input type="radio" name="q3" value="b"><span><span data-lang="zh" class="show">B. 新加坡</span><span data-lang="en">B. Singapore</span></span></label>
+      <label class="option"><input type="radio" name="q3" value="c"><span><span data-lang="zh" class="show">C. 德國</span><span data-lang="en">C. Germany</span></span></label>
+      <label class="option"><input type="radio" name="q3" value="d"><span><span data-lang="zh" class="show">D. 美國</span><span data-lang="en">D. United States</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>受限地區包括：加拿大、古巴、伊朗、伊拉克、緬甸、朝鮮、蘇丹、敘利亞、土耳其、美國。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Restricted regions include Canada, Cuba, Iran, Iraq, Myanmar, North Korea, Sudan, Syria, Turkey, and the United States.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="c">
+    <div class="q-header"><span class="q-num">Q4</span><div class="q-text">
+      <span data-lang="zh" class="show">MC Markets 目前是否支援法幣（如美元、人民幣）直接入金？</span>
+      <span data-lang="en">Does MC Markets currently support direct fiat deposits (e.g., USD, CNY)?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q4" value="a"><span><span data-lang="zh" class="show">A. 支援銀行轉帳</span><span data-lang="en">A. Yes, via bank transfer</span></span></label>
+      <label class="option"><input type="radio" name="q4" value="b"><span><span data-lang="zh" class="show">B. 支援信用卡</span><span data-lang="en">B. Yes, via credit card</span></span></label>
+      <label class="option"><input type="radio" name="q4" value="c"><span><span data-lang="zh" class="show">C. 不支援，需先在其他平台購買加密貨幣後轉入</span><span data-lang="en">C. No. Users must purchase crypto on another platform first and transfer it in</span></span></label>
+      <label class="option"><input type="radio" name="q4" value="d"><span><span data-lang="zh" class="show">D. 支援 PayPal</span><span data-lang="en">D. Yes, via PayPal</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>目前不支援法幣入金，用戶需先在其他平台購買加密貨幣後轉入 MC Markets。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Fiat deposits are not currently supported. Users must purchase crypto on another platform first and then transfer it to MC Markets.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="abcde">
+    <div class="q-header"><span class="q-num">Q5</span><div class="q-text">
+      <span data-lang="zh" class="show">MC Markets 的核心優勢包括以下哪些？</span>
+      <span data-lang="en">Which of the following are core advantages of MC Markets?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">複選</span><span class="q-type" data-lang="en">Multi</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="checkbox" name="q5" value="a"><span><span data-lang="zh" class="show">A. 鏈上可驗證的儲備證明（部署在 Arbitrum）</span><span data-lang="en">A. On-chain verifiable proof of reserves (deployed on Arbitrum)</span></span></label>
+      <label class="option"><input type="checkbox" name="q5" value="b"><span><span data-lang="zh" class="show">B. 多資產一站式交易（外匯、黃金、指數、加密貨幣）</span><span data-lang="en">B. One-stop multi-asset trading (forex, gold, indices, crypto)</span></span></label>
+      <label class="option"><input type="checkbox" name="q5" value="c"><span><span data-lang="zh" class="show">C. Web3 原生（錢包連接即交易）</span><span data-lang="en">C. Web3-native (wallet connection enables trading)</span></span></label>
+      <label class="option"><input type="checkbox" name="q5" value="d"><span><span data-lang="zh" class="show">D. 專業級引擎毫秒級執行</span><span data-lang="en">D. Professional-grade engine with millisecond-level execution</span></span></label>
+      <label class="option"><input type="checkbox" name="q5" value="e"><span><span data-lang="zh" class="show">E. 積分激勵與社區共建</span><span data-lang="en">E. Point-based incentives and community participation</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>以上 5 項全部為 MC Markets 的核心優勢。</span>
+      <span data-lang="en"><strong>Explanation:</strong> All 5 options are core advantages of MC Markets.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q6</span><div class="q-text">
+      <span data-lang="zh" class="show">MC Markets 平台是否提供投資建議？</span>
+      <span data-lang="en">Does MC Markets provide investment advice?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q6" value="a"><span><span data-lang="zh" class="show">A. 提供，由分析師團隊撰寫</span><span data-lang="en">A. Yes, provided by an analyst team</span></span></label>
+      <label class="option"><input type="radio" name="q6" value="b"><span><span data-lang="zh" class="show">B. 不提供。客服不能對行情、配置、是否買賣作出建議</span><span data-lang="en">B. No. Support cannot advise on markets, allocation, or buy/sell decisions</span></span></label>
+      <label class="option"><input type="radio" name="q6" value="c"><span><span data-lang="zh" class="show">C. VIP 用戶可獲得</span><span data-lang="en">C. Available for VIP users</span></span></label>
+      <label class="option"><input type="radio" name="q6" value="d"><span><span data-lang="zh" class="show">D. 在公告中發布投資建議</span><span data-lang="en">D. Published via announcements</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>MC Markets 不提供投資建議。所有投資決策由用戶自行承擔。</span>
+      <span data-lang="en"><strong>Explanation:</strong> MC Markets does not provide investment advice. All investment decisions are made at the user's own discretion.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="d">
+    <div class="q-header"><span class="q-num">Q7</span><div class="q-text">
+      <span data-lang="zh" class="show">用戶的 MC Markets 帳戶結構共包含幾個獨立帳戶？</span>
+      <span data-lang="en">How many separate accounts are included in a user's MC Markets account structure?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q7" value="a"><span><span data-lang="zh" class="show">A. 1 個（合一帳戶）</span><span data-lang="en">A. 1 (unified account)</span></span></label>
+      <label class="option"><input type="radio" name="q7" value="b"><span><span data-lang="zh" class="show">B. 2 個（現貨 + 合約）</span><span data-lang="en">B. 2 (Spot + Perps)</span></span></label>
+      <label class="option"><input type="radio" name="q7" value="c"><span><span data-lang="zh" class="show">C. 3 個（現貨 + 合約 + 金庫）</span><span data-lang="en">C. 3 (Spot + Perps + Vault)</span></span></label>
+      <label class="option"><input type="radio" name="q7" value="d"><span><span data-lang="zh" class="show">D. 4 個（現貨 + 合約 + 金庫 + 理財 Earn）</span><span data-lang="en">D. 4 (Spot + Perps + Vault + Earn)</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>包含現貨帳戶、合約帳戶（僅 USDC）、金庫帳戶、理財帳戶。帳戶間劃轉免費即時。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Includes Spot Account, Perps Account (USDC only), Vault Account, and Earn Account. Transfers between accounts are free and instant.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q8</span><div class="q-text">
+      <span data-lang="zh" class="show">合約帳戶僅支援哪種幣作為保證金？</span>
+      <span data-lang="en">Which currency is supported as margin in the Perps Account?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q8" value="a"><span>A. USDT</span></label>
+      <label class="option"><input type="radio" name="q8" value="b"><span>B. USDC</span></label>
+      <label class="option"><input type="radio" name="q8" value="c"><span>C. BTC</span></label>
+      <label class="option"><input type="radio" name="q8" value="d"><span>D. ETH</span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>合約帳戶僅支援 USDC 作為保證金。</span>
+      <span data-lang="en"><strong>Explanation:</strong> The Perps Account only supports USDC as margin.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="c">
+    <div class="q-header"><span class="q-num">Q9</span><div class="q-text">
+      <span data-lang="zh" class="show">MC Markets 內部各帳戶之間（現貨、合約、金庫、理財）劃轉是否收費？</span>
+      <span data-lang="en">Are internal transfers between MC Markets accounts (Spot, Perps, Vault, Earn) charged?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q9" value="a"><span><span data-lang="zh" class="show">A. 收 0.1% 手續費</span><span data-lang="en">A. 0.1% fee charged</span></span></label>
+      <label class="option"><input type="radio" name="q9" value="b"><span><span data-lang="zh" class="show">B. 大額劃轉需審核</span><span data-lang="en">B. Large transfers require review</span></span></label>
+      <label class="option"><input type="radio" name="q9" value="c"><span><span data-lang="zh" class="show">C. 完全免費，即時到帳</span><span data-lang="en">C. Free and instantaneous</span></span></label>
+      <label class="option"><input type="radio" name="q9" value="d"><span><span data-lang="zh" class="show">D. 24 小時後到帳</span><span data-lang="en">D. Arrives after 24 hours</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>四個帳戶之間的劃轉完全免費，且即時完成。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Transfers between all four accounts are completely free and completed instantly.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q10</span><div class="q-text">
+      <span data-lang="zh" class="show">MC Markets 目前是否已發布官方移動 App？</span>
+      <span data-lang="en">Has MC Markets released an official mobile app?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q10" value="a"><span><span data-lang="zh" class="show">A. 已上架 App Store 與 Google Play</span><span data-lang="en">A. Available on App Store and Google Play</span></span></label>
+      <label class="option"><input type="radio" name="q10" value="b"><span><span data-lang="zh" class="show">B. 尚未發布。任何要求下載 APK 或安裝描述文件的「MC Markets App」均為仿冒</span><span data-lang="en">B. Not yet released. Any "MC Markets App" requesting APK download or profile installation is counterfeit</span></span></label>
+      <label class="option"><input type="radio" name="q10" value="c"><span><span data-lang="zh" class="show">C. 僅限內測用戶下載</span><span data-lang="en">C. Available only for beta testers</span></span></label>
+      <label class="option"><input type="radio" name="q10" value="d"><span><span data-lang="zh" class="show">D. 已上架，但需要邀請碼</span><span data-lang="en">D. Released but requires invite code</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>MC Markets 目前僅通過官方網站提供服務，移動 App 尚未發布。任何「MC Markets App」要求下載 APK 都是仿冒，需警告用戶。</span>
+      <span data-lang="en"><strong>Explanation:</strong> MC Markets currently provides services only via the official website; no mobile app has been released. Any "MC Markets App" asking for APK downloads is counterfeit — users must be warned.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Section 2: Registration, KYC, Deposit & Withdrawal ===== -->
+<div class="section">
+  <div class="section-title">
+    <span data-lang="zh" class="show">💳 第二部分：註冊、KYC、充值與提現（10 題）</span>
+    <span data-lang="en">💳 Part 2: Registration, KYC, Deposit & Withdrawal (10 questions)</span>
+  </div>
+  <div class="section-desc">
+    <span data-lang="zh" class="show">考核帳戶註冊、KYC 等級、充值提現流程與安全規範</span>
+    <span data-lang="en">Tests account registration, KYC levels, deposit/withdrawal workflows, and security guidelines</span>
+  </div>
+
+  <div class="question" data-correct="d">
+    <div class="q-header"><span class="q-num">Q11</span><div class="q-text">
+      <span data-lang="zh" class="show">MC Markets 支援哪些註冊登入方式？</span>
+      <span data-lang="en">Which sign-up/login methods does MC Markets support?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q11" value="a"><span><span data-lang="zh" class="show">A. 僅郵箱</span><span data-lang="en">A. Email only</span></span></label>
+      <label class="option"><input type="radio" name="q11" value="b"><span><span data-lang="zh" class="show">B. 僅錢包</span><span data-lang="en">B. Wallet only</span></span></label>
+      <label class="option"><input type="radio" name="q11" value="c"><span><span data-lang="zh" class="show">C. 郵箱 + 手機號</span><span data-lang="en">C. Email + phone number</span></span></label>
+      <label class="option"><input type="radio" name="q11" value="d"><span><span data-lang="zh" class="show">D. 郵箱、Google、加密貨幣錢包三種方式</span><span data-lang="en">D. Email, Google, and crypto wallet (three methods)</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>支援郵箱、Google 或錢包三種方式註冊登入。</span>
+      <span data-lang="en"><strong>Explanation:</strong> MC Markets supports three sign-up methods: email, Google, and crypto wallet.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q12</span><div class="q-text">
+      <span data-lang="zh" class="show">關於 KYC 等級，下列敘述何者正確？</span>
+      <span data-lang="en">Which of the following statements about KYC levels is correct?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q12" value="a"><span><span data-lang="zh" class="show">A. L0 是人臉認證，L2 是基礎認證</span><span data-lang="en">A. L0 is facial verification, L2 is basic verification</span></span></label>
+      <label class="option"><input type="radio" name="q12" value="b"><span><span data-lang="zh" class="show">B. L0 為基礎認證、L1 為證件認證、L2 為人臉認證</span><span data-lang="en">B. L0 is basic, L1 is document verification, L2 is facial verification</span></span></label>
+      <label class="option"><input type="radio" name="q12" value="c"><span><span data-lang="zh" class="show">C. 只有一個等級</span><span data-lang="en">C. Only one level exists</span></span></label>
+      <label class="option"><input type="radio" name="q12" value="d"><span><span data-lang="zh" class="show">D. 共有 5 個等級</span><span data-lang="en">D. There are 5 levels</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>KYC 三等級：L0 基礎認證（姓名等資料）、L1 證件認證、L2 人臉認證。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Three KYC levels: L0 Basic (name etc.), L1 Document, L2 Facial.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="c">
+    <div class="q-header"><span class="q-num">Q13</span><div class="q-text">
+      <span data-lang="zh" class="show">用戶交易加密貨幣（現貨或合約）是否需要完成 KYC？</span>
+      <span data-lang="en">Is KYC required to trade cryptocurrencies (spot or perpetuals)?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q13" value="a"><span><span data-lang="zh" class="show">A. 必須完成 L2</span><span data-lang="en">A. L2 required</span></span></label>
+      <label class="option"><input type="radio" name="q13" value="b"><span><span data-lang="zh" class="show">B. 必須完成 L1</span><span data-lang="en">B. L1 required</span></span></label>
+      <label class="option"><input type="radio" name="q13" value="c"><span><span data-lang="zh" class="show">C. 不需要 KYC</span><span data-lang="en">C. No KYC required</span></span></label>
+      <label class="option"><input type="radio" name="q13" value="d"><span><span data-lang="zh" class="show">D. 充值前必須完成 L0</span><span data-lang="en">D. L0 required before deposit</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>加密貨幣交易（現貨、合約）無需 KYC。但 RWA 類標的（外匯、黃金、白銀、指數、原油、美股）需完成 L0 基礎認證。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Crypto trading (spot, perps) does not require KYC. However, RWA assets (forex, gold, silver, indices, oil, US stocks) require L0 basic verification.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="d">
+    <div class="q-header"><span class="q-num">Q14</span><div class="q-text">
+      <span data-lang="zh" class="show">MC Markets 支援哪些幣種充值？</span>
+      <span data-lang="en">Which currencies does MC Markets support for deposits?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q14" value="a"><span><span data-lang="zh" class="show">A. 僅 USDC</span><span data-lang="en">A. USDC only</span></span></label>
+      <label class="option"><input type="radio" name="q14" value="b"><span><span data-lang="zh" class="show">B. 僅 BTC、ETH</span><span data-lang="en">B. BTC and ETH only</span></span></label>
+      <label class="option"><input type="radio" name="q14" value="c"><span><span data-lang="zh" class="show">C. BTC、ETH、SOL</span><span data-lang="en">C. BTC, ETH, SOL</span></span></label>
+      <label class="option"><input type="radio" name="q14" value="d"><span><span data-lang="zh" class="show">D. BTC、ETH、SOL、USDT、USDC</span><span data-lang="en">D. BTC, ETH, SOL, USDT, USDC</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>支援 BTC、ETH、SOL、USDT、USDC 五種主流加密貨幣。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Supports five major cryptocurrencies: BTC, ETH, SOL, USDT, and USDC.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q15</span><div class="q-text">
+      <span data-lang="zh" class="show">用戶將資金充值錯誤的網絡（例如把 BEP20 USDC 發到 Arbitrum 地址），平台能否找回？</span>
+      <span data-lang="en">A user deposits funds to the wrong network (e.g., sending BEP20 USDC to an Arbitrum address). Can the platform recover them?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q15" value="a"><span><span data-lang="zh" class="show">A. 可以，提交工單後 24 小時退回</span><span data-lang="en">A. Yes, refunded within 24 hours after ticket submission</span></span></label>
+      <label class="option"><input type="radio" name="q15" value="b"><span><span data-lang="zh" class="show">B. 區塊鏈交易不可逆，平台無法干預鏈上交易，原則上無法找回。建議用戶提交 TxHash 等資料由團隊評估，但不做保證</span><span data-lang="en">B. Blockchain transactions are irreversible. Platform cannot intervene; recovery is generally impossible. User can submit TxHash for assessment, but no guarantee</span></span></label>
+      <label class="option"><input type="radio" name="q15" value="c"><span><span data-lang="zh" class="show">C. 平台會全額補償</span><span data-lang="en">C. Platform fully compensates</span></span></label>
+      <label class="option"><input type="radio" name="q15" value="d"><span><span data-lang="zh" class="show">D. 用戶可重新發送獲取退款</span><span data-lang="en">D. User can resend to get a refund</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>充錯網絡或地址資金原則上無法找回。客服話術應誠實告知並引導用戶提交完整資料供團隊評估，但絕不能承諾找回。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Funds sent to the wrong network/address cannot generally be recovered. Support must be honest, ask for full information for assessment, but never promise recovery.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q16</span><div class="q-text">
+      <span data-lang="zh" class="show">用戶充值資金預設會進入哪個帳戶？</span>
+      <span data-lang="en">By default, where do user deposits go?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q16" value="a"><span><span data-lang="zh" class="show">A. 合約帳戶</span><span data-lang="en">A. Perps Account</span></span></label>
+      <label class="option"><input type="radio" name="q16" value="b"><span><span data-lang="zh" class="show">B. 現貨帳戶</span><span data-lang="en">B. Spot Account</span></span></label>
+      <label class="option"><input type="radio" name="q16" value="c"><span><span data-lang="zh" class="show">C. 金庫帳戶</span><span data-lang="en">C. Vault Account</span></span></label>
+      <label class="option"><input type="radio" name="q16" value="d"><span><span data-lang="zh" class="show">D. 理財帳戶</span><span data-lang="en">D. Earn Account</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>充值資金一律入帳至現貨帳戶。如需做合約，需在儀表板劃轉到合約帳戶。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Deposits always go to the Spot Account. To trade perpetuals, transfer from the dashboard to the Perps Account.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="c">
+    <div class="q-header"><span class="q-num">Q17</span><div class="q-text">
+      <span data-lang="zh" class="show">用戶能直接從合約帳戶提現嗎？</span>
+      <span data-lang="en">Can users withdraw directly from the Perps Account?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q17" value="a"><span><span data-lang="zh" class="show">A. 可以，直接提現</span><span data-lang="en">A. Yes, directly</span></span></label>
+      <label class="option"><input type="radio" name="q17" value="b"><span><span data-lang="zh" class="show">B. 需要先 KYC 才能提現</span><span data-lang="en">B. Yes, after completing KYC</span></span></label>
+      <label class="option"><input type="radio" name="q17" value="c"><span><span data-lang="zh" class="show">C. 不能。提現只能從現貨帳戶操作，需先將合約帳戶資金劃轉至現貨</span><span data-lang="en">C. No. Withdrawals are only from the Spot Account; users must transfer Perps funds to Spot first</span></span></label>
+      <label class="option"><input type="radio" name="q17" value="d"><span><span data-lang="zh" class="show">D. 需要支付額外手續費才能直接提現</span><span data-lang="en">D. Direct withdrawal requires extra fee</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>提現只能從現貨帳戶操作。合約帳戶資金需先劃轉到現貨帳戶（即時免費）才能提現。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Only the Spot Account allows withdrawals. Perps funds must be transferred to Spot first (instant and free).</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q18</span><div class="q-text">
+      <span data-lang="zh" class="show">關於提現處理時間，下列何者正確？</span>
+      <span data-lang="en">Which of the following is correct regarding withdrawal processing time?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q18" value="a"><span><span data-lang="zh" class="show">A. 全部 5 分鐘內完成</span><span data-lang="en">A. All within 5 minutes</span></span></label>
+      <label class="option"><input type="radio" name="q18" value="b"><span><span data-lang="zh" class="show">B. 快速提現通常 2 小時內完成；大額提現可能需要 24 小時內審核</span><span data-lang="en">B. Fast withdrawals usually within 2 hours; large withdrawals may need up to 24 hours review</span></span></label>
+      <label class="option"><input type="radio" name="q18" value="c"><span><span data-lang="zh" class="show">C. 一律 T+3 工作日</span><span data-lang="en">C. Always T+3 business days</span></span></label>
+      <label class="option"><input type="radio" name="q18" value="d"><span><span data-lang="zh" class="show">D. 全部 24 小時審核</span><span data-lang="en">D. All require 24-hour review</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>快速提現通常 2 小時內完成，大額提現可能需要 24 小時審核。審核通過後到帳時間取決於區塊鏈網絡狀況。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Fast withdrawals usually complete within 2 hours; large withdrawals may require up to 24-hour review. Final arrival depends on blockchain network conditions.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q19</span><div class="q-text">
+      <span data-lang="zh" class="show">關於提現手續費，下列何者正確？</span>
+      <span data-lang="en">Which is correct regarding withdrawal fees?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q19" value="a"><span><span data-lang="zh" class="show">A. 平台收取 1% 提現費</span><span data-lang="en">A. Platform charges 1%</span></span></label>
+      <label class="option"><input type="radio" name="q19" value="b"><span><span data-lang="zh" class="show">B. 平台不收提現手續費，僅產生鏈上 Gas Fee（具體以提現頁面顯示為準）</span><span data-lang="en">B. Platform charges no withdrawal fee; only blockchain Gas Fee applies (subject to withdrawal page)</span></span></label>
+      <label class="option"><input type="radio" name="q19" value="c"><span><span data-lang="zh" class="show">C. 收取固定 5 USDC</span><span data-lang="en">C. Fixed 5 USDC fee</span></span></label>
+      <label class="option"><input type="radio" name="q19" value="d"><span><span data-lang="zh" class="show">D. VIP 才免費</span><span data-lang="en">D. Free only for VIPs</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>平台不收取提現手續費，但鏈上 Gas Fee 由用戶承擔。具體以提現頁面顯示為準。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Platform charges no withdrawal fees; users bear blockchain Gas Fees. Refer to withdrawal page for details.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q20</span><div class="q-text">
+      <span data-lang="zh" class="show">關於提幣地址白名單，下列敘述何者正確？</span>
+      <span data-lang="en">Which is correct regarding the withdrawal address whitelist?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q20" value="a"><span><span data-lang="zh" class="show">A. 永久有效，無需維護</span><span data-lang="en">A. Permanent, no maintenance needed</span></span></label>
+      <label class="option"><input type="radio" name="q20" value="b"><span><span data-lang="zh" class="show">B. 啟用後僅能提現到白名單地址；每個地址有有效期，過期後自動刪除</span><span data-lang="en">B. Once enabled, withdrawals only go to whitelisted addresses; each has a validity period and is auto-removed after expiry</span></span></label>
+      <label class="option"><input type="radio" name="q20" value="c"><span><span data-lang="zh" class="show">C. 只能添加 1 個地址</span><span data-lang="en">C. Only 1 address allowed</span></span></label>
+      <label class="option"><input type="radio" name="q20" value="d"><span><span data-lang="zh" class="show">D. 是強制功能，所有用戶必須啟用</span><span data-lang="en">D. Mandatory for all users</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>白名單為可選的安全功能。啟用後僅能提現到核准地址，每個地址有有效期，需定期檢查更新。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Whitelist is an optional security feature. Once enabled, only approved addresses can receive withdrawals; each address has a validity period and needs regular review.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Section 3: Trading, Margin & Fees ===== -->
+<div class="section">
+  <div class="section-title">
+    <span data-lang="zh" class="show">📈 第三部分：交易、保證金與費用（11 題）</span>
+    <span data-lang="en">📈 Part 3: Trading, Margin & Fees (11 questions)</span>
+  </div>
+  <div class="section-desc">
+    <span data-lang="zh" class="show">考核合約交易、現貨、閃兌、保證金與費率規則</span>
+    <span data-lang="en">Tests perpetuals trading, spot, swap, margin, and fee rules</span>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q21</span><div class="q-text">
+      <span data-lang="zh" class="show">MC Markets 預設使用哪種保證金模式？</span>
+      <span data-lang="en">What is MC Markets' default margin mode?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q21" value="a"><span><span data-lang="zh" class="show">A. 逐倉保證金</span><span data-lang="en">A. Isolated margin</span></span></label>
+      <label class="option"><input type="radio" name="q21" value="b"><span><span data-lang="zh" class="show">B. 全倉保證金（Cross Margin）</span><span data-lang="en">B. Cross margin</span></span></label>
+      <label class="option"><input type="radio" name="q21" value="c"><span><span data-lang="zh" class="show">C. 動態保證金</span><span data-lang="en">C. Dynamic margin</span></span></label>
+      <label class="option"><input type="radio" name="q21" value="d"><span><span data-lang="zh" class="show">D. 無保證金</span><span data-lang="en">D. No margin</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>預設全倉保證金模式，即帳戶中所有可用資金都可作為倉位的保證金。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Cross margin is the default — all available funds in the account can serve as margin for positions.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q22</span><div class="q-text">
+      <span data-lang="zh" class="show">加密貨幣（BTC/ETH/SOL）的最大槓桿是多少？</span>
+      <span data-lang="en">What is the maximum leverage for cryptocurrency (BTC/ETH/SOL)?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q22" value="a"><span><span data-lang="zh" class="show">A. 100 倍</span><span data-lang="en">A. 100x</span></span></label>
+      <label class="option"><input type="radio" name="q22" value="b"><span><span data-lang="zh" class="show">B. 50 倍（採浮動槓桿分層，名義金額 0-50 萬美元最高 50 倍）</span><span data-lang="en">B. 50x (tiered floating leverage; max 50x for $0–$500K notional)</span></span></label>
+      <label class="option"><input type="radio" name="q22" value="c"><span><span data-lang="zh" class="show">C. 200 倍</span><span data-lang="en">C. 200x</span></span></label>
+      <label class="option"><input type="radio" name="q22" value="d"><span><span data-lang="zh" class="show">D. 25 倍</span><span data-lang="en">D. 25x</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>加密貨幣採用浮動槓桿分層：0-50 萬美元 50 倍，50 萬-100 萬美元 25 倍。倉位越大可用槓桿越低。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Crypto uses tiered floating leverage: $0–$500K → 50x, $500K–$1M → 25x. Larger positions get lower max leverage.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="c">
+    <div class="q-header"><span class="q-num">Q23</span><div class="q-text">
+      <span data-lang="zh" class="show">貴金屬（XAU/XAG）的最大槓桿是多少？</span>
+      <span data-lang="en">What is the maximum leverage for precious metals (XAU/XAG)?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q23" value="a"><span><span data-lang="zh" class="show">A. 50 倍</span><span data-lang="en">A. 50x</span></span></label>
+      <label class="option"><input type="radio" name="q23" value="b"><span><span data-lang="zh" class="show">B. 100 倍</span><span data-lang="en">B. 100x</span></span></label>
+      <label class="option"><input type="radio" name="q23" value="c"><span><span data-lang="zh" class="show">C. 200 倍（名義金額 0-200 萬美元最高 200 倍）</span><span data-lang="en">C. 200x (max 200x for $0–$2M notional)</span></span></label>
+      <label class="option"><input type="radio" name="q23" value="d"><span><span data-lang="zh" class="show">D. 500 倍</span><span data-lang="en">D. 500x</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>貴金屬浮動槓桿分層：0-200 萬美元 200 倍，200 萬-300 萬美元 100 倍。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Precious metals tiered leverage: $0–$2M → 200x, $2M–$3M → 100x.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q24</span><div class="q-text">
+      <span data-lang="zh" class="show">MC Markets 的清算（強制平倉）是基於什麼價格觸發？</span>
+      <span data-lang="en">What price triggers liquidation (forced closure) on MC Markets?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q24" value="a"><span><span data-lang="zh" class="show">A. 最新成交價（Last Price）</span><span data-lang="en">A. Last Price</span></span></label>
+      <label class="option"><input type="radio" name="q24" value="b"><span><span data-lang="zh" class="show">B. 標記價（Mark Price），由多源預言機與內部數據加權生成</span><span data-lang="en">B. Mark Price — weighted aggregation of oracles and internal data</span></span></label>
+      <label class="option"><input type="radio" name="q24" value="c"><span><span data-lang="zh" class="show">C. 訂單簿買一價</span><span data-lang="en">C. Best bid in the order book</span></span></label>
+      <label class="option"><input type="radio" name="q24" value="d"><span><span data-lang="zh" class="show">D. 24 小時平均價</span><span data-lang="en">D. 24-hour average price</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>清算完全基於 Mark Price，能有效防止單筆異常交易或惡意操縱導致錯誤清算。止損/止盈單觸發也基於 Mark Price。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Liquidation is entirely based on Mark Price, preventing wrongful liquidation from anomalous trades or manipulation. Stop-loss/take-profit triggers also use Mark Price.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="c">
+    <div class="q-header"><span class="q-num">Q25</span><div class="q-text">
+      <span data-lang="zh" class="show">關於 MC Markets 的保證金率閾值與清算機制，下列何者「最完整且正確」？</span>
+      <span data-lang="en">Which statement about MC Markets' margin ratio thresholds and liquidation is the MOST complete and correct?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q25" value="a"><span><span data-lang="zh" class="show">A. 保證金率低於 80% 直接強制平倉，無預警</span><span data-lang="en">A. Margin ratio below 80% triggers liquidation directly with no warning</span></span></label>
+      <label class="option"><input type="radio" name="q25" value="b"><span><span data-lang="zh" class="show">B. 保證金率低於 50% 發出 Margin Call，低於 30% 強制平倉</span><span data-lang="en">B. Margin Call at 50%, liquidation below 30%</span></span></label>
+      <label class="option"><input type="radio" name="q25" value="c"><span><span data-lang="zh" class="show">C. 保證金率低於 100% 時系統發出追加保證金通知（Margin Call），提醒用戶及時入金或減倉；若保證金率進一步下降至 50% 以下，系統將自動啟動強制平倉流程</span><span data-lang="en">C. When margin ratio falls below 100%, the system issues a Margin Call asking the user to add margin or reduce positions; if it further drops below 50%, the system automatically initiates forced liquidation</span></span></label>
+      <label class="option"><input type="radio" name="q25" value="d"><span><span data-lang="zh" class="show">D. 沒有預警機制，全憑用戶自行監控</span><span data-lang="en">D. No warning mechanism; user monitors entirely on their own</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>關鍵兩個閾值 — <strong>100%：Margin Call 預警</strong>（提醒用戶追加保證金或減倉，避免觸及強平線）；<strong>50%：強制平倉</strong>（系統自動啟動清算）。清算完全基於 Mark Price，規則透明可預測。客服在處理用戶清算疑問時，務必說明這兩道防線。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Two key thresholds — <strong>100%: Margin Call warning</strong> (asking users to add margin or reduce positions); <strong>50%: forced liquidation</strong> (system auto-initiates). Based on Mark Price; transparent and predictable rules. Support must explain both lines of defense when handling liquidation questions.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="d">
+    <div class="q-header"><span class="q-num">Q26</span><div class="q-text">
+      <span data-lang="zh" class="show">關於現貨交易手續費，下列何者正確？</span>
+      <span data-lang="en">Which is correct regarding spot trading fees?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q26" value="a"><span>A. 0.01%</span></label>
+      <label class="option"><input type="radio" name="q26" value="b"><span>B. 0.1%</span></label>
+      <label class="option"><input type="radio" name="q26" value="c"><span>C. 0.025%</span></label>
+      <label class="option"><input type="radio" name="q26" value="d"><span><span data-lang="zh" class="show">D. 所有現貨交易對均為 0.05%</span><span data-lang="en">D. All spot pairs are 0.05%</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>所有現貨交易對統一 0.05%，無分級。</span>
+      <span data-lang="en"><strong>Explanation:</strong> All spot pairs uniformly charge 0.05%, no tiering.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q27</span><div class="q-text">
+      <span data-lang="zh" class="show">加密貨幣合約的預設手續費為多少？最低可降至多少？</span>
+      <span data-lang="en">What is the default crypto perpetuals fee, and the minimum tier?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q27" value="a"><span><span data-lang="zh" class="show">A. 預設 0.05%，最低 0.02%</span><span data-lang="en">A. Default 0.05%, min 0.02%</span></span></label>
+      <label class="option"><input type="radio" name="q27" value="b"><span><span data-lang="zh" class="show">B. 預設 0.030%（開倉 0.015% + 平倉 0.015%），最低可降至 0.012%</span><span data-lang="en">B. Default 0.030% (open 0.015% + close 0.015%), min 0.012%</span></span></label>
+      <label class="option"><input type="radio" name="q27" value="c"><span><span data-lang="zh" class="show">C. 預設 0.1%，最低 0.05%</span><span data-lang="en">C. Default 0.1%, min 0.05%</span></span></label>
+      <label class="option"><input type="radio" name="q27" value="d"><span><span data-lang="zh" class="show">D. 預設 0.005%，最低 0.001%</span><span data-lang="en">D. Default 0.005%, min 0.001%</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>加密貨幣合約分 7 個費率等級，依過去 14 天加權交易量遞減：&gt;$5M 0.026%、&gt;$25M 0.0215%、&gt;$100M 0.017%、&gt;$500M 0.014%、&gt;$2B 0.013%、&gt;$7B 0.012%。</span>
+      <span data-lang="en"><strong>Explanation:</strong> 7 fee tiers based on 14-day weighted volume: &gt;$5M 0.026%, &gt;$25M 0.0215%, &gt;$100M 0.017%, &gt;$500M 0.014%, &gt;$2B 0.013%, &gt;$7B 0.012%.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="d">
+    <div class="q-header"><span class="q-num">Q28</span><div class="q-text">
+      <span data-lang="zh" class="show">資金費率多久結算一次？</span>
+      <span data-lang="en">How often is the funding rate settled?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q28" value="a"><span><span data-lang="zh" class="show">A. 每日一次</span><span data-lang="en">A. Once daily</span></span></label>
+      <label class="option"><input type="radio" name="q28" value="b"><span><span data-lang="zh" class="show">B. 每 8 小時一次</span><span data-lang="en">B. Every 8 hours</span></span></label>
+      <label class="option"><input type="radio" name="q28" value="c"><span><span data-lang="zh" class="show">C. 每 4 小時一次</span><span data-lang="en">C. Every 4 hours</span></span></label>
+      <label class="option"><input type="radio" name="q28" value="d"><span><span data-lang="zh" class="show">D. 每小時整點結算一次（系統每分鐘更新費率）</span><span data-lang="en">D. Hourly on the hour (rates update every minute)</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>資金費率每小時整點結算，前端每分鐘更新即時費率。當市場多空失衡時，偏重一方支付給另一方。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Settled hourly on the hour; rates update every minute on the front-end. When long/short imbalance exists, the heavier side pays the other.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="c">
+    <div class="q-header"><span class="q-num">Q29</span><div class="q-text">
+      <span data-lang="zh" class="show">用戶問：「為什麼最新成交價已經到了我的止損價，但訂單沒觸發？」最佳回覆是？</span>
+      <span data-lang="en">User asks: "Last Price hit my stop-loss but the order didn't trigger. Why?" — Best response is?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q29" value="a"><span><span data-lang="zh" class="show">A. 系統故障，請稍候</span><span data-lang="en">A. System glitch, please wait</span></span></label>
+      <label class="option"><input type="radio" name="q29" value="b"><span><span data-lang="zh" class="show">B. 您可能設置錯誤了</span><span data-lang="en">B. You may have set it incorrectly</span></span></label>
+      <label class="option"><input type="radio" name="q29" value="c"><span><span data-lang="zh" class="show">C. MC Markets 的止損/止盈基於標記價（Mark Price）觸發，而非單筆 Last Price。Mark Price 由多源加權平滑生成，能有效防止瞬間異常波動誤觸發訂單，保護用戶倉位</span><span data-lang="en">C. MC Markets' stop-loss/take-profit triggers are based on Mark Price, not single-trade Last Price. Mark Price is a smoothed multi-source weighted price that prevents wrongful triggers from momentary anomalies, protecting user positions</span></span></label>
+      <label class="option"><input type="radio" name="q29" value="d"><span><span data-lang="zh" class="show">D. 把訂單刪除重新設置</span><span data-lang="en">D. Delete and re-create the order</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>核心知識點：所有觸發訂單和清算都以 Mark Price 為準，這是平台公允價格基準。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Core concept: all triggered orders and liquidations use Mark Price — the platform's fair-price reference.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q30</span><div class="q-text">
+      <span data-lang="zh" class="show">什麼是「影響成本（Impact Cost）」？</span>
+      <span data-lang="en">What is "Impact Cost"?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q30" value="a"><span><span data-lang="zh" class="show">A. 平台額外收取的隱藏費用</span><span data-lang="en">A. A hidden fee charged by the platform</span></span></label>
+      <label class="option"><input type="radio" name="q30" value="b"><span><span data-lang="zh" class="show">B. 訂單規模對市場流動性的衝擊成本，反映在成交價與報價的偏差。訂單越大影響成本越高，系統下單前會展示預估</span><span data-lang="en">B. The cost of an order's impact on market liquidity, reflected in the gap between execution and quote price. Larger orders have higher impact cost; system shows an estimate before order placement</span></span></label>
+      <label class="option"><input type="radio" name="q30" value="c"><span><span data-lang="zh" class="show">C. 持倉過夜費</span><span data-lang="en">C. An overnight holding fee</span></span></label>
+      <label class="option"><input type="radio" name="q30" value="d"><span><span data-lang="zh" class="show">D. 滑點是平台主動造成的</span><span data-lang="en">D. Slippage caused intentionally by the platform</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>影響成本反映訂單對流動性的衝擊。下單前系統會在介面預估展示，確保透明。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Impact cost reflects an order's impact on liquidity. The system shows an estimate pre-order to ensure transparency.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="c">
+    <div class="q-header"><span class="q-num">Q31</span><div class="q-text">
+      <span data-lang="zh" class="show">閃兌（Swap）的匯率多久刷新一次？</span>
+      <span data-lang="en">How often does the Swap rate refresh?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q31" value="a"><span><span data-lang="zh" class="show">A. 每 1 秒</span><span data-lang="en">A. Every 1 second</span></span></label>
+      <label class="option"><input type="radio" name="q31" value="b"><span><span data-lang="zh" class="show">B. 每 5 秒</span><span data-lang="en">B. Every 5 seconds</span></span></label>
+      <label class="option"><input type="radio" name="q31" value="c"><span><span data-lang="zh" class="show">C. 每 10 秒自動刷新</span><span data-lang="en">C. Every 10 seconds (auto-refresh)</span></span></label>
+      <label class="option"><input type="radio" name="q31" value="d"><span><span data-lang="zh" class="show">D. 每分鐘</span><span data-lang="en">D. Every minute</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>閃兌匯率每 10 秒自動刷新。系統根據當時匯率計算兌換比例，點擊後即時完成。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Swap rate auto-refreshes every 10 seconds. The system computes the ratio based on the current rate; conversion is instant after click.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Section 4: Vault, Earn & Points ===== -->
+<div class="section">
+  <div class="section-title">
+    <span data-lang="zh" class="show">🏦 第四部分：金庫 MLP、Earn 與積分（8 題）</span>
+    <span data-lang="en">🏦 Part 4: MLP Vault, Earn & Points (8 questions)</span>
+  </div>
+  <div class="section-desc">
+    <span data-lang="zh" class="show">考核 MLP 金庫、Earn 理財、積分系統的核心規則</span>
+    <span data-lang="en">Tests core rules of MLP Vault, Earn savings, and the points system</span>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q32</span><div class="q-text">
+      <span data-lang="zh" class="show">MLP 金庫接受哪些幣種存款？</span>
+      <span data-lang="en">Which currencies does the MLP Vault accept?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q32" value="a"><span><span data-lang="zh" class="show">A. BTC、ETH、SOL</span><span data-lang="en">A. BTC, ETH, SOL</span></span></label>
+      <label class="option"><input type="radio" name="q32" value="b"><span><span data-lang="zh" class="show">B. 僅 USDC</span><span data-lang="en">B. USDC only</span></span></label>
+      <label class="option"><input type="radio" name="q32" value="c"><span><span data-lang="zh" class="show">C. 所有支援的加密貨幣</span><span data-lang="en">C. All supported cryptos</span></span></label>
+      <label class="option"><input type="radio" name="q32" value="d"><span><span data-lang="zh" class="show">D. USDC 與 USDT</span><span data-lang="en">D. USDC and USDT</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>MLP 金庫僅接受 USDC 存款。</span>
+      <span data-lang="en"><strong>Explanation:</strong> MLP Vault only accepts USDC deposits.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="c">
+    <div class="q-header"><span class="q-num">Q33</span><div class="q-text">
+      <span data-lang="zh" class="show">MLP 金庫的鎖定期為多久？追加存款後會如何？</span>
+      <span data-lang="en">What is the MLP Vault lock-up period? How does adding deposits affect it?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q33" value="a"><span><span data-lang="zh" class="show">A. 7 天，追加不影響原鎖定期</span><span data-lang="en">A. 7 days; additional deposits don't affect lock-up</span></span></label>
+      <label class="option"><input type="radio" name="q33" value="b"><span><span data-lang="zh" class="show">B. 無鎖定期</span><span data-lang="en">B. No lock-up period</span></span></label>
+      <label class="option"><input type="radio" name="q33" value="c"><span><span data-lang="zh" class="show">C. 4 天。若解鎖前追加存款，全部餘額的解鎖時間會以最新一筆存款時間重新計算 4 天</span><span data-lang="en">C. 4 days. If additional deposits are made before unlock, the entire balance's unlock time resets to 4 days from the latest deposit</span></span></label>
+      <label class="option"><input type="radio" name="q33" value="d"><span><span data-lang="zh" class="show">D. 30 天，無法追加</span><span data-lang="en">D. 30 days, no additional deposits allowed</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>關鍵知識點 — 鎖定期 4 天，追加存款會「整體重新計算」鎖定期。客服必須提醒用戶以避免誤解。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Key concept — 4-day lock; additional deposits "reset" the lock-up for the entire balance. Support must warn users to avoid misunderstandings.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q34</span><div class="q-text">
+      <span data-lang="zh" class="show">用戶問：「金庫 MLP 是不是保本的？」正確回覆是？</span>
+      <span data-lang="en">User asks: "Is the MLP Vault principal-protected?" — What's the correct response?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q34" value="a"><span><span data-lang="zh" class="show">A. 是的，平台保本保息</span><span data-lang="en">A. Yes, principal and interest guaranteed</span></span></label>
+      <label class="option"><input type="radio" name="q34" value="b"><span><span data-lang="zh" class="show">B. 不是。MLP 採承擔風險的主動交易策略，收益不保證；可能損失部分或全部本金，損失情況下不予補償。存款前請確認理解並接受風險</span><span data-lang="en">B. No. MLP uses an active trading strategy that bears risk; returns are not guaranteed. Users may lose part or all of principal, with no compensation. Confirm understanding and acceptance of risks before depositing</span></span></label>
+      <label class="option"><input type="radio" name="q34" value="c"><span><span data-lang="zh" class="show">C. VIP 用戶保本</span><span data-lang="en">C. Principal-protected for VIP users</span></span></label>
+      <label class="option"><input type="radio" name="q34" value="d"><span><span data-lang="zh" class="show">D. 鎖倉期內保本</span><span data-lang="en">D. Principal-protected during lock-up</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>絕不能誤導用戶。MLP 不保本，必須明確告知風險。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Never mislead users. MLP is NOT principal-protected; risks must be clearly stated.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q35</span><div class="q-text">
+      <span data-lang="zh" class="show">MLP 金庫的存款額度與什麼掛鉤？</span>
+      <span data-lang="en">What does the MLP Vault deposit limit depend on?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q35" value="a"><span><span data-lang="zh" class="show">A. 帳戶餘額</span><span data-lang="en">A. Account balance</span></span></label>
+      <label class="option"><input type="radio" name="q35" value="b"><span><span data-lang="zh" class="show">B. 用戶積分等級。沒有積分額度為 0，無法存入；積分越高可存比例越大</span><span data-lang="en">B. User points tier. No points = 0 limit (cannot deposit); higher points unlock larger deposit ratio</span></span></label>
+      <label class="option"><input type="radio" name="q35" value="c"><span><span data-lang="zh" class="show">C. 註冊時間</span><span data-lang="en">C. Registration date</span></span></label>
+      <label class="option"><input type="radio" name="q35" value="d"><span><span data-lang="zh" class="show">D. KYC 等級</span><span data-lang="en">D. KYC level</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>存款限額與積分掛鉤。具體階梯以金庫頁面實時顯示為準（例如 2000+ 積分 25%、10000+ 50%、50000+ 75%、100000+ 100%）。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Deposit limit is tied to points. Exact tiers shown on the Vault page (e.g., 2000+ points 25%, 10000+ 50%, 50000+ 75%, 100000+ 100%).</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q36</span><div class="q-text">
+      <span data-lang="zh" class="show">MLP 金庫的收益來源是什麼？</span>
+      <span data-lang="en">What is the source of MLP Vault yields?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q36" value="a"><span><span data-lang="zh" class="show">A. 平台補貼</span><span data-lang="en">A. Platform subsidies</span></span></label>
+      <label class="option"><input type="radio" name="q36" value="b"><span><span data-lang="zh" class="show">B. 交易手續費分配與策略對沖截取的資金費率，T+1 每日結算，採單利計算</span><span data-lang="en">B. Trading fee distribution + funding rates captured by hedging strategies; T+1 daily settlement, simple interest</span></span></label>
+      <label class="option"><input type="radio" name="q36" value="c"><span><span data-lang="zh" class="show">C. 借貸利息</span><span data-lang="en">C. Lending interest</span></span></label>
+      <label class="option"><input type="radio" name="q36" value="d"><span><span data-lang="zh" class="show">D. 廣告收入</span><span data-lang="en">D. Ad revenue</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>來源：交易手續費分配 + 策略對沖截取的資金費率。T+1 每日結算、單利、每日獨立不計入次日本金。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Sources: fee distribution + hedging-captured funding rates. T+1 daily, simple interest, daily yields are independent and don't compound.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="d">
+    <div class="q-header"><span class="q-num">Q37</span><div class="q-text">
+      <span data-lang="zh" class="show">Earn（賺取）功能與 MLP 金庫的主要區別是什麼？</span>
+      <span data-lang="en">What's the main difference between Earn and the MLP Vault?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q37" value="a"><span><span data-lang="zh" class="show">A. 兩者完全相同</span><span data-lang="en">A. They are identical</span></span></label>
+      <label class="option"><input type="radio" name="q37" value="b"><span><span data-lang="zh" class="show">B. Earn 鎖定期更長</span><span data-lang="en">B. Earn has a longer lock-up</span></span></label>
+      <label class="option"><input type="radio" name="q37" value="c"><span><span data-lang="zh" class="show">C. MLP 風險更低</span><span data-lang="en">C. MLP carries lower risk</span></span></label>
+      <label class="option"><input type="radio" name="q37" value="d"><span><span data-lang="zh" class="show">D. Earn 是活期理財，支援 BTC/ETH/SOL/USDC/USDT 五種幣，無鎖定期，本金不受影響；MLP 僅支援 USDC，鎖定期 4 天，本金有風險</span><span data-lang="en">D. Earn is flexible savings supporting BTC/ETH/SOL/USDC/USDT, with no lock-up and principal-safe; MLP supports only USDC, has 4-day lock-up, and carries principal risk</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>關鍵區分點 — Earn 本金安全、活期、五幣種；MLP 提供流動性、本金有風險、僅 USDC、鎖 4 天。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Key distinction — Earn: principal-safe, flexible, 5 currencies. MLP: liquidity provision, principal at risk, USDC only, 4-day lock.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q38</span><div class="q-text">
+      <span data-lang="zh" class="show">Earn 的利息以什麼幣種發放？</span>
+      <span data-lang="en">In what currency is Earn interest paid?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q38" value="a"><span><span data-lang="zh" class="show">A. 全部以 USDC 發放</span><span data-lang="en">A. All paid in USDC</span></span></label>
+      <label class="option"><input type="radio" name="q38" value="b"><span><span data-lang="zh" class="show">B. 幣本位 — 以用戶存入的原幣種結算發放（存 BTC 賺 BTC）</span><span data-lang="en">B. Coin-denominated — paid in the deposited currency (deposit BTC, earn BTC)</span></span></label>
+      <label class="option"><input type="radio" name="q38" value="c"><span><span data-lang="zh" class="show">C. 以平台代幣發放</span><span data-lang="en">C. Paid in platform tokens</span></span></label>
+      <label class="option"><input type="radio" name="q38" value="d"><span><span data-lang="zh" class="show">D. 任選</span><span data-lang="en">D. User's choice</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>幣本位結算：存什麼幣賺什麼幣。頁面顯示的 USDC 估值僅供參考。注意：幣價下跌時，換算 USDC 實際價值可能減少。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Coin-denominated: earn in what you deposit. USDC value shown is for reference only. Note: if the asset price drops, USDC-equivalent value may decrease.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q39</span><div class="q-text">
+      <span data-lang="zh" class="show">關於積分系統，下列敘述何者正確？</span>
+      <span data-lang="en">Which is correct regarding the points system?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q39" value="a"><span><span data-lang="zh" class="show">A. 積分只能通過充值獲取</span><span data-lang="en">A. Points only earned through deposits</span></span></label>
+      <label class="option"><input type="radio" name="q39" value="b"><span><span data-lang="zh" class="show">B. 積分主要由「交易積分」與「推薦積分」組成。交易積分 = 交易手續費 × 100；邀請好友後可獲得被邀請人積分的 10%</span><span data-lang="en">B. Points come mainly from "trading points" and "referral points". Trading points = trading fees × 100; referrers earn 10% of invitees' points</span></span></label>
+      <label class="option"><input type="radio" name="q39" value="c"><span><span data-lang="zh" class="show">C. 積分終身鎖定不可使用</span><span data-lang="en">C. Points are permanently locked and unusable</span></span></label>
+      <label class="option"><input type="radio" name="q39" value="d"><span><span data-lang="zh" class="show">D. 積分每月清零</span><span data-lang="en">D. Points reset monthly</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>積分按每日計算，交易積分（手續費 × 100，USDC 計價）+ 推薦積分（邀請人額外得被邀請人積分的 10%）。可在頂部導航「積分」頁面查看排行（前 100 名，每小時更新）。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Daily calculated. Trading points (fees × 100, USDC-denominated) + referral points (referrer gets extra 10% of invitee's points). Leaderboard (top 100, hourly updates) accessible via top-nav "Points".</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Section 5: Security & Anti-Fraud ===== -->
+<div class="section">
+  <div class="section-title">
+    <span data-lang="zh" class="show">🛡️ 第五部分：安全合規與防詐騙（7 題）</span>
+    <span data-lang="en">🛡️ Part 5: Security, Compliance & Anti-Fraud (7 questions)</span>
+  </div>
+  <div class="section-desc">
+    <span data-lang="zh" class="show">考核識別詐騙、保護用戶資產的能力 — 此部分為高權重</span>
+    <span data-lang="en">Tests fraud-detection and asset-protection ability — high-weight section</span>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q40</span><div class="q-text">
+      <span data-lang="zh" class="show">用戶反映：「Telegram 上有人私訊我，說是 MC Markets 的客服，要幫我加速提現，需要我提供驗證碼。」應如何回應？</span>
+      <span data-lang="en">User says: "Someone on Telegram DMed me claiming to be MC Markets support, offering to speed up my withdrawal if I share my verification code." — How should you respond?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q40" value="a"><span><span data-lang="zh" class="show">A. 確認對方身份後再提供</span><span data-lang="en">A. Verify identity then share</span></span></label>
+      <label class="option"><input type="radio" name="q40" value="b"><span><span data-lang="zh" class="show">B. 立即警告：這是詐騙！MC Markets 官方客服絕不會通過私訊聯繫處理資金，也不會索取密碼、私鑰、助記詞或 2FA 驗證碼。請勿提供任何資訊，並提示官方僅通過 cs@mcmarkets.com 與官方 Telegram 群（https://t.me/mcmarketsglobal）聯繫</span><span data-lang="en">B. Immediately warn: This is a scam! Official MC Markets support never DMs users for fund operations, nor asks for passwords, private keys, seed phrases, or 2FA codes. Do not share anything. Official channels are cs@mcmarkets.com and the official Telegram group (https://t.me/mcmarketsglobal) only</span></span></label>
+      <label class="option"><input type="radio" name="q40" value="c"><span><span data-lang="zh" class="show">C. 讓用戶自己判斷</span><span data-lang="en">C. Let the user decide</span></span></label>
+      <label class="option"><input type="radio" name="q40" value="d"><span><span data-lang="zh" class="show">D. 建議用戶撤回提現申請</span><span data-lang="en">D. Suggest withdrawing the withdrawal request</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>必須即時警告。MC Markets 官方絕不私訊用戶處理資金、絕不索取驗證碼/密碼/私鑰/助記詞。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Immediate warning required. Official MC Markets never DMs users for fund operations or requests verification codes/passwords/keys/seed phrases.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="d">
+    <div class="q-header"><span class="q-num">Q41</span><div class="q-text">
+      <span data-lang="zh" class="show">用戶說：「群裡有人說充值雙倍返利、限時 500% 獎金活動，要把 USDC 轉到指定地址。」這是什麼情況？</span>
+      <span data-lang="en">User says: "Someone in the group claims there's a double-deposit reward / 500% limited-time bonus event, asking me to send USDC to a specific address." — What is this?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q41" value="a"><span><span data-lang="zh" class="show">A. 限時官方活動</span><span data-lang="en">A. A limited-time official campaign</span></span></label>
+      <label class="option"><input type="radio" name="q41" value="b"><span><span data-lang="zh" class="show">B. VIP 專屬獎勵</span><span data-lang="en">B. VIP exclusive reward</span></span></label>
+      <label class="option"><input type="radio" name="q41" value="c"><span><span data-lang="zh" class="show">C. 真實的合作活動</span><span data-lang="en">C. A genuine partner event</span></span></label>
+      <label class="option"><input type="radio" name="q41" value="d"><span><span data-lang="zh" class="show">D. 詐騙。MC Markets 所有官方活動僅通過官網、官方 Telegram 群與 Twitter @mcmarketsglobal 發布。「充值雙倍」「500% 獎金」「轉到指定地址領獎」均為詐騙</span><span data-lang="en">D. Scam. All official MC Markets events are published only via the official website, official Telegram group, and Twitter @mcmarketsglobal. "Double deposit", "500% bonus", "send to address to claim" are all scams</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>所有要求向非平台錢包地址轉帳、填寫助記詞表單或授權錢包權限才能領取的「空投」，都是資產竊取陷阱。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Any "airdrop" requiring transfer to non-platform wallets, seed-phrase forms, or wallet authorizations is an asset-theft trap.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="c">
+    <div class="q-header"><span class="q-num">Q42</span><div class="q-text">
+      <span data-lang="zh" class="show">官方 Telegram 群中，「真正的官方人員」如何識別？</span>
+      <span data-lang="en">How can users identify "genuine official staff" in the official Telegram group?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q42" value="a"><span><span data-lang="zh" class="show">A. 看頭像是否一樣</span><span data-lang="en">A. Check if avatar matches</span></span></label>
+      <label class="option"><input type="radio" name="q42" value="b"><span><span data-lang="zh" class="show">B. 看名字是否帶「官方」二字</span><span data-lang="en">B. Check if name contains "official"</span></span></label>
+      <label class="option"><input type="radio" name="q42" value="c"><span><span data-lang="zh" class="show">C. 真正的官方身份在用戶名旁帶有「CS」（客服）或「MOD」（版主）標籤。且官方絕不會主動私訊用戶</span><span data-lang="en">C. Genuine official staff have "CS" (Customer Support) or "MOD" (Moderator) labels next to their username. Officials NEVER proactively DM users</span></span></label>
+      <label class="option"><input type="radio" name="q42" value="d"><span><span data-lang="zh" class="show">D. 看是否管理員身份</span><span data-lang="en">D. Check for admin status</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>關鍵識別點：必須有 CS 或 MOD 標籤；官方絕不主動私訊。任何沒有標籤或主動私訊聯繫的帳號都不是官方。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Key identifiers: must have CS or MOD label; officials never DM proactively. Any account without these labels or that DMs you proactively is NOT official.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q43</span><div class="q-text">
+      <span data-lang="zh" class="show">用戶說：「我已經把 OTP / 2FA 驗證碼發給對方了，怎麼辦？」應如何指導用戶？</span>
+      <span data-lang="en">User says: "I already sent my OTP / 2FA code to the scammer. What should I do?" — How should you guide them?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q43" value="a"><span><span data-lang="zh" class="show">A. 等對方歸還</span><span data-lang="en">A. Wait for them to return it</span></span></label>
+      <label class="option"><input type="radio" name="q43" value="b"><span><span data-lang="zh" class="show">B. 立即指導用戶：1）修改密碼；2）重置 2FA；3）檢查帳戶餘額和交易記錄；4）發郵件至 cs@mcmarkets.com（標註緊急），團隊會優先處理</span><span data-lang="en">B. Immediately guide them: 1) Change password; 2) Reset 2FA; 3) Check balance and transaction history; 4) Email cs@mcmarkets.com (mark urgent) — team will prioritize</span></span></label>
+      <label class="option"><input type="radio" name="q43" value="c"><span><span data-lang="zh" class="show">C. 讓用戶聯絡警方就好</span><span data-lang="en">C. Just tell them to contact the police</span></span></label>
+      <label class="option"><input type="radio" name="q43" value="d"><span><span data-lang="zh" class="show">D. 告訴用戶資金已無法挽回</span><span data-lang="en">D. Tell them their funds are unrecoverable</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>緊急情況的標準處理流程：第一時間止損（改密碼/重設 2FA）、檢查、聯絡客服優先處理。資金安全類問題 SLA 是 4 小時內回覆。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Standard urgent protocol: stop the bleeding first (change password / reset 2FA), check, escalate to support. Fund-safety SLA is 4 hours.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="c">
+    <div class="q-header"><span class="q-num">Q44</span><div class="q-text">
+      <span data-lang="zh" class="show">用戶要求平台賠償其交易爆倉的損失。客服應如何處理？</span>
+      <span data-lang="en">User demands compensation for liquidation losses. How should support handle this?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q44" value="a"><span><span data-lang="zh" class="show">A. 答應賠償 50%</span><span data-lang="en">A. Agree to 50% compensation</span></span></label>
+      <label class="option"><input type="radio" name="q44" value="b"><span><span data-lang="zh" class="show">B. 直接拒絕並結束對話</span><span data-lang="en">B. Refuse outright and end conversation</span></span></label>
+      <label class="option"><input type="radio" name="q44" value="c"><span><span data-lang="zh" class="show">C. 說明：交易虧損屬於市場風險，由用戶自行承擔，平台不提供賠償。MC Markets 清算機制透明、基於 Mark Price，且設有兩道防線（保證金率 100% 發出 Margin Call 預警、低於 50% 才強制平倉），規則公開可核對。如用戶認為清算存在異常（如價格未觸及清算線卻被平倉），可提供訂單 ID、發生時間、截圖至 cs@mcmarkets.com 由團隊核實</span><span data-lang="en">C. Explain: trading losses are market risk and borne by the user; platform doesn't compensate. MC Markets' liquidation is transparent, based on Mark Price, with two lines of defense (Margin Call warning at 100% margin ratio, forced liquidation only below 50%) — rules are public and verifiable. If user believes liquidation was abnormal (e.g., closed without price reaching the line), submit order ID, time, screenshots to cs@mcmarkets.com for team review</span></span></label>
+      <label class="option"><input type="radio" name="q44" value="d"><span><span data-lang="zh" class="show">D. 問用戶要爆倉多少賠多少</span><span data-lang="en">D. Ask the user how much to compensate</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>明確說明風險自負原則，但同時提供「異常情況可核實」的合理路徑。注意：平台不接受對交易結果的賠償訴求，但會核實機制是否異常。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Clearly state the user-bears-risk principle, while providing a "verify if abnormal" path. The platform doesn't compensate for trading outcomes but will verify mechanism integrity.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="abcdef">
+    <div class="q-header"><span class="q-num">Q45</span><div class="q-text">
+      <span data-lang="zh" class="show">下列哪些行為在 MC Markets 平台上是被「禁止」的？</span>
+      <span data-lang="en">Which of the following are PROHIBITED on MC Markets?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">複選</span><span class="q-type" data-lang="en">Multi</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="checkbox" name="q45" value="a"><span><span data-lang="zh" class="show">A. 刷單交易（wash trading）</span><span data-lang="en">A. Wash trading</span></span></label>
+      <label class="option"><input type="checkbox" name="q45" value="b"><span><span data-lang="zh" class="show">B. 虛假掛單（spoofing）、分層掛單（layering）</span><span data-lang="en">B. Spoofing, layering</span></span></label>
+      <label class="option"><input type="checkbox" name="q45" value="c"><span><span data-lang="zh" class="show">C. 操作重複或鏡像帳戶套利</span><span data-lang="en">C. Arbitrage via duplicate or mirrored accounts</span></span></label>
+      <label class="option"><input type="checkbox" name="q45" value="d"><span><span data-lang="zh" class="show">D. 利用技術漏洞或延遲套利</span><span data-lang="en">D. Exploiting technical vulnerabilities or latency arbitrage</span></span></label>
+      <label class="option"><input type="checkbox" name="q45" value="e"><span><span data-lang="zh" class="show">E. 洗錢、恐怖主義融資</span><span data-lang="en">E. Money laundering, terrorist financing</span></span></label>
+      <label class="option"><input type="checkbox" name="q45" value="f"><span><span data-lang="zh" class="show">F. 規避交易限額或風控</span><span data-lang="en">F. Circumventing trading limits or risk controls</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>以上 6 項全部被禁止。違規可能導致資金凍結或帳戶終止。</span>
+      <span data-lang="en"><strong>Explanation:</strong> All 6 are prohibited. Violations may result in fund freeze or account termination.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q46</span><div class="q-text">
+      <span data-lang="zh" class="show">用戶問：「我的資產真的安全嗎？萬一 MC Markets 跑路怎麼辦？」最佳回覆方向？</span>
+      <span data-lang="en">User asks: "Is my money really safe? What if MC Markets disappears?" — Best response?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q46" value="a"><span><span data-lang="zh" class="show">A. 模糊保證安全</span><span data-lang="en">A. Vaguely assure safety</span></span></label>
+      <label class="option"><input type="radio" name="q46" value="b"><span><span data-lang="zh" class="show">B. 用戶資產由鏈上儲備證明保障 1:1 儲備，部署在 Arbitrum，可獨立驗證、隨時提取。冷熱錢包分離、多重簽名。核心基礎設施基於經獨立審計的鏈上協議（Arbitrum、Chainlink、Pyth）。平台受 FSA 監管</span><span data-lang="en">B. User assets are backed 1:1 by on-chain proof of reserves deployed on Arbitrum — independently verifiable, withdrawable anytime. Cold/hot wallet separation, multi-sig. Core infrastructure built on audited on-chain protocols (Arbitrum, Chainlink, Pyth). Platform regulated by FSA</span></span></label>
+      <label class="option"><input type="radio" name="q46" value="c"><span><span data-lang="zh" class="show">C. 客服無權回應這類問題</span><span data-lang="en">C. Support isn't authorized to answer this</span></span></label>
+      <label class="option"><input type="radio" name="q46" value="d"><span><span data-lang="zh" class="show">D. 讓用戶自己檢查</span><span data-lang="en">D. Tell users to check themselves</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>用具體事實回應顧慮：1:1 鏈上儲備證明、可獨立驗證、冷熱分離、多簽、合規監管。</span>
+      <span data-lang="en"><strong>Explanation:</strong> Address concerns with concrete facts: 1:1 on-chain proof of reserves, independent verifiability, cold/hot separation, multi-sig, regulatory compliance.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Section 6: Service Process & Short Answer ===== -->
+<div class="section">
+  <div class="section-title">
+    <span data-lang="zh" class="show">📝 第六部分：客服流程與簡答（5 題）</span>
+    <span data-lang="en">📝 Part 6: Service Process & Short Answers (5 questions)</span>
+  </div>
+  <div class="section-desc">
+    <span data-lang="zh" class="show">綜合應用題 — 考核服務流程、轉人工判斷與客服話術組織能力</span>
+    <span data-lang="en">Applied scenarios — tests service workflow, escalation judgment, and response composition</span>
+  </div>
+
+  <div class="question" data-correct="abcde">
+    <div class="q-header"><span class="q-num">Q47</span><div class="q-text">
+      <span data-lang="zh" class="show">出現以下哪種情況，應引導用戶聯繫人工客服（cs@mcmarkets.com）？</span>
+      <span data-lang="en">In which scenarios should users be directed to human support (cs@mcmarkets.com)?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">複選</span><span class="q-type" data-lang="en">Multi</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="checkbox" name="q47" value="a"><span><span data-lang="zh" class="show">A. 資金問題（充值未到/提現異常/餘額不對）排查後仍未解決</span><span data-lang="en">A. Fund issues (deposit not arrived / withdrawal anomaly / balance mismatch) unresolved after troubleshooting</span></span></label>
+      <label class="option"><input type="checkbox" name="q47" value="b"><span><span data-lang="zh" class="show">B. 帳戶被凍結或受限</span><span data-lang="en">B. Account frozen or restricted</span></span></label>
+      <label class="option"><input type="checkbox" name="q47" value="c"><span><span data-lang="zh" class="show">C. 用戶疑似被盜</span><span data-lang="en">C. Suspected account compromise</span></span></label>
+      <label class="option"><input type="checkbox" name="q47" value="d"><span><span data-lang="zh" class="show">D. 用戶明確要求轉人工</span><span data-lang="en">D. User explicitly requests human support</span></span></label>
+      <label class="option"><input type="checkbox" name="q47" value="e"><span><span data-lang="zh" class="show">E. 複雜技術問題無法通過自助解決</span><span data-lang="en">E. Complex technical issues that self-service cannot resolve</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>以上 5 項全部適用。提交工單時應提示用戶附上：UID/註冊郵箱、TxHash（如涉及鏈上交易）、訂單 ID（如涉及具體訂單）、問題詳細描述與截圖。</span>
+      <span data-lang="en"><strong>Explanation:</strong> All 5 apply. When submitting tickets, ask users to include: UID/registered email, TxHash (for on-chain transactions), Order ID (for specific orders), detailed description, and screenshots.</span>
+    </div>
+  </div>
+
+  <div class="question" data-correct="b">
+    <div class="q-header"><span class="q-num">Q48</span><div class="q-text">
+      <span data-lang="zh" class="show">關於客服 SLA 回覆時效，下列何者正確？</span>
+      <span data-lang="en">Which is correct regarding the support SLA?</span>
+      <span class="q-type" data-lang="zh" style="display:inline">單選</span><span class="q-type" data-lang="en">Single</span>
+    </div></div>
+    <div class="options">
+      <label class="option"><input type="radio" name="q48" value="a"><span><span data-lang="zh" class="show">A. 全部 24 小時內回覆</span><span data-lang="en">A. All within 24 hours</span></span></label>
+      <label class="option"><input type="radio" name="q48" value="b"><span><span data-lang="zh" class="show">B. 緊急問題（資金安全）4 小時內回覆；一般問題 24 小時內回覆</span><span data-lang="en">B. Urgent (fund security) within 4 hours; general within 24 hours</span></span></label>
+      <label class="option"><input type="radio" name="q48" value="c"><span><span data-lang="zh" class="show">C. 全部 1 小時內</span><span data-lang="en">C. All within 1 hour</span></span></label>
+      <label class="option"><input type="radio" name="q48" value="d"><span><span data-lang="zh" class="show">D. 工作日才處理</span><span data-lang="en">D. Business days only</span></span></label>
+    </div>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>解析：</strong>SLA：緊急（資金）4h；一般 24h。超時可使用 [Urgent Follow-up] 標題回覆原郵件加急。</span>
+      <span data-lang="en"><strong>Explanation:</strong> SLA: urgent (fund issues) 4h; general 24h. If overdue, reply to the original email with [Urgent Follow-up] in the subject to escalate.</span>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header"><span class="q-num">Q49</span><div class="q-text">
+      <span data-lang="zh" class="show">【簡答】用戶反映：「我充值了 USDC 兩個小時還沒到帳，怎麼辦？」請寫出你的標準排查回覆（中文或英文皆可，至少 4 個排查步驟 + 提交工單時所需資訊）</span>
+      <span data-lang="en">[Short Answer] User says: "My USDC deposit hasn't arrived after 2 hours. What do I do?" — Write your standard troubleshooting response (Chinese or English; at least 4 steps + ticket submission requirements)</span>
+      <span class="q-type" data-lang="zh" style="display:inline">簡答</span><span class="q-type" data-lang="en">Short</span>
+    </div></div>
+    <textarea class="text-answer" name="q49" data-placeholder-zh="請寫下您的回覆..." data-placeholder-en="Write your response here..." placeholder="請寫下您的回覆..."></textarea>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>參考答案：</strong>外部充值需要區塊鏈確認，請依以下步驟排查：1）確認您所選網絡與 MC Markets 充值頁面要求一致（充錯網絡無法找回）；2）使用 TxHash 在區塊鏈瀏覽器查詢交易狀態（BTC：blockchain.com；Arbitrum：arbiscan.io）；3）若顯示 Pending，請等待網絡確認；4）若顯示 Success 但餘額未更新，請等幾分鐘後重新整理 Overview 頁面。如交易已確認超過 1 小時仍未到帳，請發郵件至 cs@mcmarkets.com，並附上：TxHash、充值幣種、金額、所選網絡、發起時間、UID/註冊郵箱、相關截圖。</span>
+      <span data-lang="en"><strong>Reference Answer:</strong> External deposits require blockchain confirmations. Please troubleshoot: 1) Confirm the network selected matches MC Markets' deposit page requirements (wrong network = irretrievable); 2) Check transaction status using TxHash on a block explorer (BTC: blockchain.com; Arbitrum: arbiscan.io); 3) If "Pending", wait for network confirmation; 4) If "Success" but balance hasn't updated, wait a few minutes and refresh the Overview page. If confirmed >1 hour with no arrival, email cs@mcmarkets.com with: TxHash, currency, amount, network, initiation time, UID/registered email, and screenshots.</span>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header"><span class="q-num">Q50</span><div class="q-text">
+      <span data-lang="zh" class="show">【簡答】用戶情緒激動地說：「我用了 50 倍槓桿做 BTC 多單，剛剛瞬間爆倉，我覺得是 MC Markets 故意刷我清算，要求賠償！」請寫出符合公司立場、同理且專業的回覆。</span>
+      <span data-lang="en">[Short Answer] User emotionally says: "I went long BTC at 50x leverage and just got instantly liquidated. I think MC Markets intentionally hunted my liquidation — I demand compensation!" — Write a response that aligns with company stance, shows empathy, and remains professional.</span>
+      <span class="q-type" data-lang="zh" style="display:inline">簡答</span><span class="q-type" data-lang="en">Short</span>
+    </div></div>
+    <textarea class="text-answer" name="q50" data-placeholder-zh="請寫下您的回覆..." data-placeholder-en="Write your response here..." placeholder="請寫下您的回覆..."></textarea>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>參考答案要點：</strong>1）先表達同理，理解用戶情緒；2）說明清算機制：MC Markets 清算完全基於 Mark Price（多源預言機 + 內部數據加權），且設有兩道防線 — 保證金率低於 100% 時系統會發出 Margin Call 預警提醒追加保證金或減倉；只有保證金率進一步降至 50% 以下才會啟動強制平倉。基於 Mark Price 而非 Last Price，能防止單筆異常交易誤觸發；3）說明立場：交易虧損（含清算）屬市場風險，平台不提供賠償；高槓桿（50 倍）會放大波動成倍數的虧損，新手建議降槓桿；4）提供合理路徑：若認為清算機制存在異常（如價格未觸及清算線卻被平倉），可提供訂單 ID、發生時間、截圖至 cs@mcmarkets.com，團隊會核實；5）絕不承諾賠償，但要展現會認真核查的態度。</span>
+      <span data-lang="en"><strong>Reference Points:</strong> 1) Express empathy first; 2) Explain liquidation mechanism: MC Markets uses Mark Price (multi-source oracle + internal data weighted aggregation) with two lines of defense — Margin Call warning when margin ratio drops below 100% (asking user to add margin or reduce); forced liquidation only triggers below 50%. Based on Mark Price not Last Price, preventing wrongful triggers; 3) Position: trading losses (including liquidations) are market risk; platform doesn't compensate. 50x leverage amplifies volatility losses dramatically — beginners should reduce leverage; 4) Reasonable path: if user believes the liquidation was abnormal (e.g., closed without price reaching line), submit order ID, time, screenshots to cs@mcmarkets.com for team verification; 5) Never promise compensation, but show willingness to verify thoroughly.</span>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header"><span class="q-num">Q51</span><div class="q-text">
+      <span data-lang="zh" class="show">【簡答】用戶說：「我打算把全部退休金（10 萬美金）all in 進金庫 MLP，看到別人說年化有 30%，這安不安全？」請寫出你的回覆。</span>
+      <span data-lang="en">[Short Answer] User says: "I'm thinking about putting my entire retirement savings ($100K) into MLP Vault. I saw someone say it has 30% APY — is it safe?" — Write your response.</span>
+      <span class="q-type" data-lang="zh" style="display:inline">簡答</span><span class="q-type" data-lang="en">Short</span>
+    </div></div>
+    <textarea class="text-answer" name="q51" data-placeholder-zh="請寫下您的回覆..." data-placeholder-en="Write your response here..." placeholder="請寫下您的回覆..."></textarea>
+    <div class="explanation">
+      <span data-lang="zh" class="show"><strong>參考答案要點：</strong>1）必須提示風險：MLP 採承擔風險的主動交易策略，收益不保證，可能損失部分或全部本金，損失情況下不予賠償；2）明確說明 APY 是動態的，基於市場真實表現，平台從未承諾固定收益。任何外部宣稱「穩賺」「保本」的均非官方；3）金庫鎖定期 4 天，期間不能取出；追加存款會整體重新計算 4 天；4）不提供投資建議：MC Markets 不提供個人理財規劃或資產配置建議，建議用戶根據自身風險承受能力決定；不要將全部資金投入金庫，特別是退休金/養老錢；個人配置建議諮詢持牌理財顧問；5）若用戶仍想存入，可先以小額體驗了解運作機制；6）態度要誠懇、不勸誘、不誇大收益、不誤導風險。</span>
+      <span data-lang="en"><strong>Reference Points:</strong> 1) Must disclose risk: MLP uses active risk-bearing strategy; returns not guaranteed; may lose part or all principal; no compensation; 2) Clarify that APY is dynamic, based on actual market performance; platform never promises fixed returns. Any external "guaranteed profit" or "principal-protected" claim is NOT official; 3) Vault has 4-day lock-up; additional deposits reset the lock for the entire balance; 4) No investment advice: MC Markets doesn't provide personal financial planning or asset allocation advice; advise user to decide based on their own risk tolerance; do NOT put all funds into vault, especially retirement money; consult a licensed financial advisor for personal allocation; 5) If still interested, suggest starting with a small amount; 6) Tone: sincere, non-pushy, never inflate returns or downplay risk.</span>
+    </div>
+  </div>
+</div>
+
+<!-- Buttons -->
+<div class="btn-group">
+  <button type="button" class="btn btn-primary" onclick="submitExam()">
+    <span data-lang="zh" class="show">📊 提交考卷</span>
+    <span data-lang="en">📊 Submit Exam</span>
+  </button>
+  <button type="button" class="btn btn-secondary" onclick="resetExam()">
+    <span data-lang="zh" class="show">🔄 重新作答</span>
+    <span data-lang="en">🔄 Reset</span>
+  </button>
+  <button type="button" class="btn btn-secondary" onclick="window.print()">
+    <span data-lang="zh" class="show">🖨️ 列印</span>
+    <span data-lang="en">🖨️ Print</span>
+  </button>
+</div>
+
+<!-- Result Panel -->
+<div class="result-panel" id="resultPanel">
+  <div class="result-score" id="resultScore">0</div>
+  <div class="result-status" id="resultStatus">—</div>
+  <div class="result-detail">
+    <div class="result-stat"><strong id="correctCount">0</strong>
+      <span><span data-lang="zh" class="show">選擇題答對</span><span data-lang="en">Correct</span></span>
+    </div>
+    <div class="result-stat"><strong id="wrongCount">0</strong>
+      <span><span data-lang="zh" class="show">選擇題答錯</span><span data-lang="en">Wrong</span></span>
+    </div>
+    <div class="result-stat"><strong id="totalChoice">48</strong>
+      <span><span data-lang="zh" class="show">選擇題總數</span><span data-lang="en">Total Choice</span></span>
+    </div>
+    <div class="result-stat"><strong>3</strong>
+      <span><span data-lang="zh" class="show">簡答題（人工評分）</span><span data-lang="en">Short Answer (manual)</span></span>
+    </div>
+  </div>
+  <p style="text-align: center; margin-top: 16px; font-size: 13px; color: #64748b;">
+    <span data-lang="zh" class="show">說明：選擇題占 80 分（共 48 題，每題約 1.67 分）；簡答題 3 題占 20 分（每題約 6.7 分），由主管人工評分。</span>
+    <span data-lang="en">Note: Multiple choice = 80 points (48 questions, ~1.67 each). Short answer = 20 points (3 questions, ~6.7 each), graded manually by the supervisor.</span>
+  </p>
+</div>
+
+</form>
+
+</div>
+
+<script>
+document.getElementById('userDate').valueAsDate = new Date();
+
+const form = document.getElementById('examForm');
+const totalQuestions = 51;
+const totalChoice = 48;
+
+// Language switching
+function setLanguage(lang) {
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    if (el.getAttribute('data-lang') === lang) {
+      el.classList.add('show');
+    } else {
+      el.classList.remove('show');
+    }
+  });
+  // Update html lang attribute
+  document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
+  // Update placeholders
+  document.querySelectorAll('[data-placeholder-zh]').forEach(el => {
+    const ph = lang === 'zh' ? el.getAttribute('data-placeholder-zh') : el.getAttribute('data-placeholder-en');
+    if (ph) el.setAttribute('placeholder', ph);
+  });
+  // Update button active states
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-set-lang') === lang);
+  });
+  // Save preference
+  try { localStorage.setItem('mcm_lang', lang); } catch(e) {}
+}
+
+// Bind language buttons
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    setLanguage(btn.getAttribute('data-set-lang'));
+  });
+});
+
+// Restore saved language preference (or auto-detect from browser)
+try {
+  const saved = localStorage.getItem('mcm_lang');
+  if (saved) {
+    setLanguage(saved);
+  } else {
+    const browserLang = (navigator.language || 'zh').toLowerCase();
+    if (browserLang.startsWith('en')) setLanguage('en');
+  }
+} catch(e) {}
+
+// Update progress bar
+function updateProgress() {
+  const radioGroups = new Set(Array.from(form.querySelectorAll('input[type=radio]:checked')).map(r => r.name));
+  const checkboxGroups = new Set(Array.from(form.querySelectorAll('input[type=checkbox]:checked')).map(c => c.name));
+  const textAnswered = Array.from(form.querySelectorAll('textarea')).filter(t => t.value.trim().length > 0).length;
+  const total = radioGroups.size + checkboxGroups.size + textAnswered;
+  const percent = Math.min((total / totalQuestions) * 100, 100);
+  document.getElementById('progressFill').style.width = percent + '%';
+}
+
+form.addEventListener('change', updateProgress);
+form.addEventListener('input', updateProgress);
+
+function submitExam() {
+  const userName = document.getElementById('userName').value.trim();
+  const isZh = document.documentElement.lang === 'zh-TW';
+  if (!userName) {
+    alert(isZh ? '請先填寫姓名！' : 'Please enter your name first!');
+    return;
+  }
+
+  let correct = 0;
+  let wrong = 0;
+
+  const questions = document.querySelectorAll('.question');
+  questions.forEach((q) => {
+    const correctAnswer = q.dataset.correct;
+    if (!correctAnswer) {
+      const exp = q.querySelector('.explanation');
+      if (exp) exp.classList.add('show');
+      return;
+    }
+
+    q.classList.remove('answered-correct', 'answered-wrong');
+
+    const radios = q.querySelectorAll('input[type=radio]');
+    const checkboxes = q.querySelectorAll('input[type=checkbox]');
+    const exp = q.querySelector('.explanation');
+
+    if (radios.length > 0) {
+      const checked = q.querySelector('input[type=radio]:checked');
+      if (checked) {
+        if (checked.value === correctAnswer) {
+          correct++;
+          q.classList.add('answered-correct');
+        } else {
+          wrong++;
+          q.classList.add('answered-wrong');
+          const correctOption = q.querySelector(`input[value="${correctAnswer}"]`);
+          if (correctOption) correctOption.parentElement.classList.add('correct');
+          checked.parentElement.classList.add('wrong');
+        }
+      } else {
+        wrong++;
+        q.classList.add('answered-wrong');
+        const correctOption = q.querySelector(`input[value="${correctAnswer}"]`);
+        if (correctOption) correctOption.parentElement.classList.add('correct');
+      }
+    } else if (checkboxes.length > 0) {
+      const checkedValues = Array.from(q.querySelectorAll('input[type=checkbox]:checked')).map(c => c.value).sort().join('');
+      const correctValues = correctAnswer.split('').sort().join('');
+      if (checkedValues === correctValues) {
+        correct++;
+        q.classList.add('answered-correct');
+      } else {
+        wrong++;
+        q.classList.add('answered-wrong');
+        correctAnswer.split('').forEach(v => {
+          const opt = q.querySelector(`input[value="${v}"]`);
+          if (opt) opt.parentElement.classList.add('correct');
+        });
+      }
+    }
+
+    if (exp) exp.classList.add('show');
+  });
+
+  const choicePoints = (correct / totalChoice) * 80;
+  const score = Math.round(choicePoints * 10) / 10;
+
+  document.getElementById('resultScore').textContent = score + ' / 80';
+  document.getElementById('correctCount').textContent = correct;
+  document.getElementById('wrongCount').textContent = wrong;
+
+  const status = document.getElementById('resultStatus');
+  if (correct >= totalChoice * 0.8) {
+    status.innerHTML = isZh
+      ? '<span class="result-pass">✅ 選擇題部分通過 — 等待主管評閱簡答題</span>'
+      : '<span class="result-pass">✅ Multiple choice passed — awaiting supervisor review of short answers</span>';
+  } else {
+    status.innerHTML = isZh
+      ? '<span class="result-fail">❌ 選擇題未達標準 — 建議複習知識庫後重考</span>'
+      : '<span class="result-fail">❌ Below passing threshold — please review the knowledge base and retake</span>';
+  }
+
+  const panel = document.getElementById('resultPanel');
+  panel.classList.add('show');
+  panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function resetExam() {
+  const isZh = document.documentElement.lang === 'zh-TW';
+  if (!confirm(isZh ? '確定要重新作答嗎？所有答案將被清空。' : 'Are you sure you want to reset? All answers will be cleared.')) return;
+  form.reset();
+  document.querySelectorAll('.question').forEach(q => {
+    q.classList.remove('answered-correct', 'answered-wrong');
+  });
+  document.querySelectorAll('.explanation').forEach(e => e.classList.remove('show'));
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('correct', 'wrong'));
+  document.getElementById('resultPanel').classList.remove('show');
+  document.getElementById('progressFill').style.width = '0%';
+  document.getElementById('userDate').valueAsDate = new Date();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
